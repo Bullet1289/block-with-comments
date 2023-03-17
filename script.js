@@ -120,7 +120,7 @@ function formatDate(dateString) {
     }
 }
 
-// Функция форматирования времени комментария
+// Функция форматирования времени комментария, в доработке
 function formatTime(date) {
     let hours = date.getHours();
     let minutes = date.getMinutes();
