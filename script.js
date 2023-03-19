@@ -116,7 +116,7 @@ function formatDate(dateString) {
         const today = new Date();
 
         if (date.toDateString() === today.toDateString()) {
-            return 'Сегодня, ' + formatTime(date);
+            return 'Сегодня, ' + formatTimeWithTimeZone(today);
         } else if (date.toDateString() === new Date(today.setDate(today.getDate() - 1)).toDateString()) {
             return 'Вчера ';
         } else {
@@ -126,18 +126,25 @@ function formatDate(dateString) {
 }
 
 // Функция форматирования времени комментария
-function formatTime(time) {
-    let hours = time.getHours();
-    let minutes = time.getMinutes();
-
+function formatTimeWithTimeZone(date) {
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+  
     if (hours < 10) {
-        hours = '0' + hours;
+      hours = "0" + hours;
     }
-
+  
     if (minutes < 10) {
-        minutes = '0' + minutes;
+      minutes = "0" + minutes;
     }
-
-    return hours + ':' + minutes;
-}
-
+  
+    const timeZoneOffset = date.getTimezoneOffset() / 60;
+    const timeZoneSign = timeZoneOffset > 0 ? "-" : "+";
+    const timeZoneHours = Math.abs(Math.floor(timeZoneOffset));
+    const timeZoneMinutes = Math.abs(timeZoneOffset % 1) * 60;
+  
+    const timeZoneString =
+      " GMT" + timeZoneSign + timeZoneHours + ":" + timeZoneMinutes;
+  
+    return hours + ":" + minutes + timeZoneString;
+  }
