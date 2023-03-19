@@ -114,13 +114,13 @@ function formatDate(dateString) {
     if (date.toDateString() === today.toDateString()) {
         return 'Сегодня, ' + formatTime(date);
     } else if (date.toDateString() === new Date(today.setDate(today.getDate() - 1)).toDateString()) {
-        return 'Вчера, ' + formatTime(date);
+        return 'Вчера ';
     } else {
-        return date.toLocaleDateString() + ', ' + formatTime(date);
+        return date.toLocaleDateString();
     }
 }
 
-// Функция форматирования времени комментария, в доработке
+// Функция форматирования времени комментария
 function formatTime(date) {
     let hours = date.getHours();
     let minutes = date.getMinutes();

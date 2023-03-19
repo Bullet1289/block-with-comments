@@ -1,3 +1,11 @@
+[id=name] {
+     
+    width: 200px;
+}
+[id=date] {
+    width: 160px;
+}
+
 .comments {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -32,6 +40,10 @@
     font-size: 16px;
 }
 
+button[type="submit"] {
+    width: 200px;
+    height: 30px;
+}
 .add-comment-form input[type="submit"] {
     padding: 5px 10px;
     background-color: #008CBA;
@@ -40,6 +52,7 @@
     border-radius: 3px;
     font-size: 16px;
     cursor: pointer;
+    
 }
 
 .add-comment-form input[type="submit"]:hover {
@@ -79,12 +92,14 @@
 
 .comment-text {
     margin-top: 10px;
+    max-width: 1200px;
+    word-break: break-all;
 }
 
 .delete-comment-button {
-    position: absolute;
+    position: relative;
     top: 70%;
-    left: 40px;
+    left: 70px;
     background-color: transparent;
     border: none;
     font-size: 16px;
@@ -92,9 +107,9 @@
 }
 
 .like-comment-button {
-    position: absolute;
+    position: relative;
     top: 70%;
-    left: 10px;
+    left: 0px;
     background-color: transparent;
     border: none;
     font-size: 16px;
@@ -106,3 +121,8 @@
 .like-comment-button:hover {
     color: #008CBA;
 }
+
+.like-active {
+    color :blue ; 
+ }
+ 
