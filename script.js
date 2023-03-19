@@ -135,3 +135,4 @@ function formatTime(date) {
 
     return hours + ':' + minutes;
 }
+
