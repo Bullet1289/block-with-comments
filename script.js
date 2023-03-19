@@ -108,22 +108,27 @@ function hideError(input) {
 
 // Функция форматирования даты комментария
 function formatDate(dateString) {
-    const date = new Date(dateString);
-    const today = new Date();
 
-    if (date.toDateString() === today.toDateString()) {
-        return 'Сегодня, ' + formatTime(date);
-    } else if (date.toDateString() === new Date(today.setDate(today.getDate() - 1)).toDateString()) {
-        return 'Вчера ';
+    if (!dateString || isNaN(Date.parse(dateString))) { // проверка на наличие и правильность даты
+        return "Дата не задана";
     } else {
-        return date.toLocaleDateString();
+        const date = new Date(dateString);
+        const today = new Date();
+
+        if (date.toDateString() === today.toDateString()) {
+            return 'Сегодня, ' + formatTime(date);
+        } else if (date.toDateString() === new Date(today.setDate(today.getDate() - 1)).toDateString()) {
+            return 'Вчера ';
+        } else {
+            return date.toLocaleDateString();
+        }
     }
 }
 
 // Функция форматирования времени комментария
-function formatTime(date) {
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
+function formatTime(time) {
+    let hours = time.getHours();
+    let minutes = time.getMinutes();
 
     if (hours < 10) {
         hours = '0' + hours;
